@@ -80,9 +80,101 @@ fun transposeMatrix(matrix: Array<Array<Int>>): Array<Array<Int>> {
 }
 
 
+fun createMatrix(): Array<Array<Int>> {
+    print("Количество строк в матрице: ")
+    val rows = readln().toInt()
+    print("Количество столбцов в матрице: ")
+    val cols = readln().toInt()
+    val matrix = Array(rows) { Array(cols) { 0 } }
+
+    println("Ввод элементов матрицы")
+
+    for (i in 0 until rows) {
+        for (j in 0 until cols) {
+            print("${i + 1}${j + 1} = ")
+            matrix[i][j] = readln().toInt()
+        }
+    }
+
+    return matrix
+}
+
+
+fun printMatrix(matrix: Array<Array<Int>>) {
+    for (row in matrix) {
+        for (element in row) {
+            print("$element\t")
+        }
+        println()
+    }
+    println()
+}
+
+fun matrixCalculator() {
+    while (true) {
+        println("Выберите операцию")
+        println("1 - Сумма матриц\n2 - Вычитание матриц\n3 - Умножение матриц\n4 - Транспонирование матрицы\n0 - Выход")
+        try {
+            val op = readln().toInt()
+            if (op in 0..4) {
+                when (op) {
+                    1 -> {
+                        val matrixA = createMatrix()
+                        println("Матрица 1")
+                        printMatrix(matrixA)
+                        val matrixB = createMatrix()
+                        println("Матрица 2")
+                        printMatrix(matrixB)
+                        println("Результат")
+                        sumMatrices(matrixA, matrixB)?.let { printMatrix(it) }
+                    }
+
+                    2 -> {
+                        val matrixA = createMatrix()
+                        println("Матрица 1")
+                        printMatrix(matrixA)
+                        val matrixB = createMatrix()
+                        println("Матрица 2")
+                        printMatrix(matrixB)
+                        println("Результат")
+                        subtractMatrices(matrixA, matrixB)?.let { printMatrix(it) }
+                    }
+
+                    3 -> {
+                        val matrixA = createMatrix()
+                        println("Матрица 1")
+                        printMatrix(matrixA)
+                        val matrixB = createMatrix()
+                        println("Матрица 2")
+                        printMatrix(matrixB)
+                        println("Результат")
+                        multiplyMatrices(matrixA, matrixB)?.let { printMatrix(it) }
+                    }
+
+                    4 -> {
+                        val matrix = createMatrix()
+                        println("Исходная матрицы")
+                        printMatrix(matrix)
+                        println("Транспонированная матрица")
+                        printMatrix(transposeMatrix(matrix))
+                    }
+
+                    0 -> {
+                        println("Конец работы")
+                        return
+                    }
+                }
+            } else {
+                println("Пожалуйста, введите число от 0 до 4.")
+            }
+        } catch (e: NumberFormatException) {
+            println("Пожалуйста, введите корректное целое число.")
+        }
+    }
+}
 
 fun main() {
 
-
+    matrixCalculator()
 
 }
