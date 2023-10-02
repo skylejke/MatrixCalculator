@@ -64,6 +64,17 @@ fun multiplyMatrices(matrixA: Array<Array<Int>>, matrixB: Array<Array<Int>>): Ar
     return result
 }
 
+fun transposeMatrix(matrix: Array<Array<Int>>): Array<Array<Int>> {
+    val numRows = matrix.size
+    val numCols = matrix[0].size
+
+    val transposedMatrix = Array(numCols) { Array(numRows) { 0 } }
+
+
+
+    return transposedMatrix
+}
+
 
 fun main() {
 
