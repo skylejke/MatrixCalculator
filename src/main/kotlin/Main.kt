@@ -70,10 +70,15 @@ fun transposeMatrix(matrix: Array<Array<Int>>): Array<Array<Int>> {
 
     val transposedMatrix = Array(numCols) { Array(numRows) { 0 } }
 
-
+    for (i in 0 until numRows) {
+        for (j in 0 until numCols) {
+            transposedMatrix[j][i] = matrix[i][j]
+        }
+    }
 
     return transposedMatrix
 }
+
 
 
 fun main() {
