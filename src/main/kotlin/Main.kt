@@ -4,14 +4,23 @@ fun sumMatrices(matrixA: Array<Array<Int>>, matrixB: Array<Array<Int>>): Array<A
     val numRowsB = matrixB.size
     val numColsB = matrixB[0].size
 
+    if (numRowsA != numRowsB || numColsA != numColsB) {
+        println("Невозможно выполнить операцию, так как матрицы не одинаковой рахмерности")
+        return null
+    }
 
     val result = Array(numRowsA) { Array(numColsB) { 0 } }
 
-
+    for (i in 0 until numRowsA) {
+        for (j in 0 until numColsB) {
+            result[i][j] = matrixA[i][j] + matrixB[i][j]
+        }
+    }
     return result
 }
 
-fun main(args: Array<String>) {
-    println("Hello World!")
-    println("Program arguments: ${args.joinToString()}")
+fun main() {
+
+
+
 }
