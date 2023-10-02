@@ -46,14 +46,24 @@ fun multiplyMatrices(matrixA: Array<Array<Int>>, matrixB: Array<Array<Int>>): Ar
     val numRowsB = matrixB.size
     val numColsB = matrixB[0].size
 
-
+    if (numColsA != numRowsB) {
+        println("Невозможно умножить матрицы, так как количество столбцов матрицы A не совпадает с количеством строк матрицы B.")
+        return null
+    }
 
     val result = Array(numRowsA) { Array(numColsB) { 0 } }
 
-
+    for (i in 0 until numRowsA) {
+        for (j in 0 until numColsB) {
+            for (k in 0 until numColsA) {
+                result[i][j] += matrixA[i][k] * matrixB[k][j]
+            }
+        }
+    }
 
     return result
 }
+
 
 fun main() {
 
